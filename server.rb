@@ -53,9 +53,9 @@ post "#{PATH}/sendtransaction" do
 end
 
 post "#{PATH}/nullifytransaction" do
-    content_type :json
-    params = JSON.parse(request.body.read)
-    puts "body: #{params}"
+	content_type :json
+	params_s = request.body.read
+    params = JSON.parse(params_s.empty? ? '{}' : params_s)
     if !params['occ'].nil? && params['occ'] == "INVALID OCC"
         response = <<~EOF
         {
