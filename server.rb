@@ -5,6 +5,10 @@ set :port, 3000
 
 PATH = '/ewallet-plugin-api-services/services/transactionservice'
 
+get "/" do
+	"OK"
+end
+
 post "#{PATH}/gettransactionnumber" do
     content_type :json
     response = <<~EOF
